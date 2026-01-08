@@ -147,13 +147,17 @@ export default function HeroSlideshow() {
               transition={{ duration: 0.8 }}
               className="relative z-10 w-full"
             >
-              {/* Glassy Container for Video */}
-              <div className="relative p-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2.5rem] shadow-2xl">
-                {/* Notch & Camera (Simulated) */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20 pointer-events-none"></div>
+              {/* Glassy Container for Video - Mac Style */}
+              <div className="relative p-2 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl">
+                {/* Window Controls (Simulated) */}
+                <div className="absolute top-4 left-4 flex gap-2 z-20">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
 
                 {/* Video Container */}
-                <div className="aspect-[9/19.5] max-w-[360px] mx-auto bg-black rounded-[2rem] overflow-hidden relative shadow-inner shadow-white/10 ring-8 ring-black">
+                <div className="aspect-video w-full bg-black rounded-lg overflow-hidden relative shadow-inner shadow-white/10">
                   <video
                     src="/AppstoreQuickPeekMovie.mp4"
                     autoPlay
