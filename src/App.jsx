@@ -79,62 +79,101 @@ function App() {
 
 
       {/* Pricing Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-slate-800/30 to-transparent">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Simple Pricing
-          </h2>
-          <p className="text-slate-400 mb-12">
-            No subscriptions. Pay once, keep it forever.
-          </p>
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] -z-10"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
 
-          <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700/50 shadow-2xl inline-block relative overflow-hidden group hover:border-purple-500/30 transition-colors duration-500">
-            {/* Glow effect */}
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-purple-500/10 blur-3xl rounded-full group-hover:bg-purple-500/20 transition-all duration-1000"></div>
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-            <div className="text-6xl mb-6 relative">💎</div>
-            <h3 className="text-2xl font-bold mb-2 text-white">Pro License</h3>
-            <div className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              $7.99
+            {/* Left Column: Value Proposition */}
+            <div className="space-y-8 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-semibold text-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                30-Day Free Trial Available
+              </div>
+
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                  Pay Once,<br />
+                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Use Forever.</span>
+                </h2>
+                <p className="text-xl text-slate-400 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                  No subscription fatigue. No hidden fees.<br />
+                  Experience the full power of QuickPeek completely free for 30 days.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-4 max-w-sm mx-auto lg:mx-0">
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                  <div className="bg-blue-500/20 p-2 rounded-lg text-blue-400">⚡️</div>
+                  <div>
+                    <div className="font-bold text-white">Unlimited Shortcuts</div>
+                    <div className="text-sm text-slate-400">Register as many files as you need</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5">
+                  <div className="bg-purple-500/20 p-2 rounded-lg text-purple-400">🔄</div>
+                  <div>
+                    <div className="font-bold text-white">Free Updates</div>
+                    <div className="text-sm text-slate-400">Get all future features for free</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-slate-400 mb-8 font-medium">Lifetime Access</p>
 
-            <ul className="text-left space-y-4 mb-10 text-slate-300">
-              <li className="flex items-center gap-3">
-                <span className="text-green-400 flex-shrink-0">✓</span>
-                <span>30-day Free Trial</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-green-400 flex-shrink-0">✓</span>
-                <span>Unlimited Shortcuts</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-green-400 flex-shrink-0">✓</span>
-                <span>All Features Unlocked</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="text-green-400 flex-shrink-0">✓</span>
-                <span>Free Future Updates</span>
-              </li>
-            </ul>
+            {/* Right Column: Pricing Card */}
+            <div className="relative mx-auto w-full max-w-md group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
 
-            <a
-              href={appStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                if (typeof window.gtag === 'function') {
-                  window.gtag('event', 'app_store_click', {
-                    event_category: 'engagement',
-                    event_label: 'Pricing',
-                    page: 'landing',
-                  });
-                }
-              }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-xl font-bold hover:opacity-90 transition-all hover:scale-105 shadow-lg shadow-purple-500/20 w-full justify-center"
-            >
-              Start Free Trial
-            </a>
+              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl">
+                {/* Badge */}
+                <div className="absolute top-0 right-0 bg-gradient-to-bl from-blue-500 to-purple-600 text-white font-bold px-4 py-2 rounded-bl-2xl rounded-tr-2xl shadow-lg">
+                  Launch Special
+                </div>
+
+                <div className="text-center mb-8">
+                  <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-inner mb-4 border border-white/5">
+                    <span className="text-5xl">💎</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-1">Pro License</h3>
+                  <div className="flex items-baseline justify-center gap-1 mt-4">
+                    <span className="text-lg text-slate-400">$</span>
+                    <span className="text-6xl font-black bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">7.99</span>
+                    <span className="text-slate-500 font-medium ml-2">/ lifetime</span>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <a
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'app_store_click', {
+                          event_category: 'engagement',
+                          event_label: 'Pricing_Trial_Main',
+                          page: 'landing',
+                        });
+                      }
+                    }}
+                    className="block w-full text-center bg-white text-slate-900 py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-white/20"
+                  >
+                    Start Free Trial
+                  </a>
+
+                  <p className="text-center text-xs text-slate-500">
+                    Download from Mac App Store • Cancel anytime
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
