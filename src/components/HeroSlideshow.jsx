@@ -51,10 +51,10 @@ export default function HeroSlideshow() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Text Content - Left Side */}
-          <div className="space-y-8 order-2 lg:order-1">
+          <div className="space-y-8 order-2 lg:order-1 lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export default function HeroSlideshow() {
             </div>
           </div>
 
-          <div className="relative h-[600px] lg:h-[800px] flex items-center justify-center order-1 lg:order-2">
+          <div className="relative h-[500px] lg:h-[700px] flex items-center justify-center order-1 lg:order-2 lg:col-span-7 scale-110 lg:scale-125 origin-center">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] blur-3xl animate-[spin_20s_linear_infinite]" />
 
             <motion.div
@@ -156,8 +156,8 @@ export default function HeroSlideshow() {
                   <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                 </div>
 
-                {/* Video Container */}
-                <div className="aspect-video w-full bg-black rounded-lg overflow-hidden relative shadow-inner shadow-white/10">
+                {/* Video Container - Larger */}
+                <div className="aspect-video w-full bg-black rounded-lg overflow-hidden relative shadow-inner shadow-white/10 ring-1 ring-white/10">
                   <video
                     src="/AppstoreQuickPeekMovie.mp4"
                     autoPlay
