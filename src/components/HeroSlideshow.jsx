@@ -138,40 +138,39 @@ export default function HeroSlideshow() {
             </div>
           </div>
 
-          {/* Visual Content - Right Side */}
           <div className="relative h-[600px] lg:h-[800px] flex items-center justify-center order-1 lg:order-2">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] blur-3xl animate-[spin_20s_linear_infinite]" />
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSlide}
-                initial={{ opacity: 0, x: 20, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: -20, scale: 0.95 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative z-10 w-full"
-              >
-                {/* Glassy Container */}
-                <div className="relative p-2 bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl">
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-700/50 rounded-full blur-[1px]"></div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-10 w-full"
+            >
+              {/* Glassy Container for Video */}
+              <div className="relative p-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2.5rem] shadow-2xl">
+                {/* Notch & Camera (Simulated) */}
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20 pointer-events-none"></div>
 
-                  {/* Image Container - OBJECT CONTAIN to prevent cropping */}
-                  <div className="aspect-[16/10] bg-slate-900/50 rounded-2xl overflow-hidden relative flex items-center justify-center">
-                    <img
-                      src={slides[activeSlide].image}
-                      alt={slides[activeSlide].title}
-                      className="w-full h-full object-contain p-4"
-                    />
+                {/* Video Container */}
+                <div className="aspect-[9/19.5] max-w-[360px] mx-auto bg-black rounded-[2rem] overflow-hidden relative shadow-inner shadow-white/10 ring-8 ring-black">
+                  <video
+                    src="/AppstoreQuickPeekMovie.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
 
-                    {/* Subtle Shine Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
-                  </div>
+                  {/* Overlay Shine */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none mix-blend-overlay" />
                 </div>
+              </div>
 
-                {/* Reflection */}
-                <div className="absolute -bottom-10 left-10 right-10 h-8 bg-black/40 blur-xl rounded-[100%] opacity-60" />
-              </motion.div>
-            </AnimatePresence>
+              {/* Reflection */}
+              <div className="absolute -bottom-10 left-10 right-10 h-8 bg-black/40 blur-xl rounded-[100%] opacity-60" />
+            </motion.div>
           </div>
 
         </div>

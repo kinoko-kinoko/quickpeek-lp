@@ -1,5 +1,6 @@
 import './App.css'
 import HeroSlideshow from './components/HeroSlideshow'
+import Navbar from './components/Navbar'
 
 function App() {
   const appStoreUrl = "https://apps.apple.com/us/app/quickpeek-image-overlay-tool/id6756771088?mt=12"
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white font-sans selection:bg-purple-500/30">
+      <Navbar />
       {/* Hero Slideshow */}
       <HeroSlideshow />
 
