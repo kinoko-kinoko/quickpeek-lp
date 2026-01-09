@@ -1,9 +1,15 @@
 import './App.css'
 import HeroSlideshow from './components/HeroSlideshow'
 import Navbar from './components/Navbar'
+import { useABTest, trackCTAClick } from './hooks/useABTest'
 
 function App() {
+  // AB Test Initialization
+  // This automatically assigns 'A' or 'B' and pushes 'ab_test' event to dataLayer
+  const variant = useABTest('headline_test_v1');
+
   const appStoreUrl = "https://apps.apple.com/us/app/quickpeek-image-overlay-tool/id6756771088?mt=12"
+
   const privacyPolicyUrl = "https://note.com/rich_hare1260/n/n4ab2822f3015"
   const supportUrl = "https://note.com/rich_hare1260/n/n02e73807a6fb"
 
@@ -38,7 +44,7 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white font-sans selection:bg-purple-500/30">
       <Navbar />
       {/* Hero Slideshow */}
-      <HeroSlideshow />
+      <HeroSlideshow variant={variant} />
 
       {/* Features Section */}
       <section className="py-20 md:py-32 bg-slate-800/30">
@@ -153,15 +159,7 @@ function App() {
                     href={appStoreUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => {
-                      if (typeof window.gtag === 'function') {
-                        window.gtag('event', 'app_store_click', {
-                          event_category: 'engagement',
-                          event_label: 'Pricing_Trial_Main',
-                          page: 'landing',
-                        });
-                      }
-                    }}
+                    onClick={() => trackCTAClick('headline_test_v1', variant, 'Pricing_Trial_Main')}
                     className="block w-full text-center bg-white text-slate-900 py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-white/20"
                   >
                     Start Free Trial

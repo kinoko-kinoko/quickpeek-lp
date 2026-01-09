@@ -1,39 +1,40 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Command, Zap, Layers, Lock } from 'lucide-react';
+import { trackCTAClick } from '../hooks/useABTest';
 
-const slides = [
-  {
-    id: 1,
-    title: "Instant Looking",
-    subtitle: "Don't Search. Just Peek.",
-    description: "Finder's QuickLook is great, but you have to find the file first. QuickPeek brings your most-used files to you, instantly, with a single key.",
-    icon: <Zap className="w-8 h-8" />,
-    color: "from-blue-500 to-cyan-400",
-    image: "/promo_instant_hotkey_1766625005708.png"
-  },
-  {
-    id: 2,
-    title: "Persistent Memory",
-    subtitle: "Pinned to Your Keyboard",
-    description: "Cheat sheets, design comps, API docs. Register them once, access them forever. Your keyboard becomes your memory.",
-    icon: <Lock className="w-8 h-8" />,
-    color: "from-purple-500 to-pink-500",
-    image: "/promo_hold_to_view_1766625035859.png"
-  },
-  {
-    id: 3,
-    title: "Zero Interruption",
-    subtitle: "Workflow Unbroken",
-    description: "No window switching. No Alt-Tab sliding. Peek at what you need, release to hide, and keep typing without missing a beat.",
-    icon: <Layers className="w-8 h-8" />,
-    color: "from-amber-400 to-orange-500",
-    image: "/promo_drag_and_zoom_1766625064100.png"
-  }
-];
-
-export default function HeroSlideshow() {
+export default function HeroSlideshow({ variant }) {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const slides = [
+    {
+      id: 1,
+      title: variant === 'B' ? "Stop Searching. Just Peek." : "Instant Looking",
+      subtitle: "Don't Search. Just Peek.",
+      description: "Finder's QuickLook is great, but you have to find the file first. QuickPeek brings your most-used files to you, instantly, with a single key.",
+      icon: <Zap className="w-8 h-8" />,
+      color: "from-blue-500 to-cyan-400",
+      image: "/promo_instant_hotkey_1766625005708.png"
+    },
+    {
+      id: 2,
+      title: "Persistent Memory",
+      subtitle: "Pinned to Your Keyboard",
+      description: "Cheat sheets, design comps, API docs. Register them once, access them forever. Your keyboard becomes your memory.",
+      icon: <Lock className="w-8 h-8" />,
+      color: "from-purple-500 to-pink-500",
+      image: "/promo_hold_to_view_1766625035859.png"
+    },
+    {
+      id: 3,
+      title: "Zero Interruption",
+      subtitle: "Workflow Unbroken",
+      description: "No window switching. No Alt-Tab sliding. Peek at what you need, release to hide, and keep typing without missing a beat.",
+      icon: <Layers className="w-8 h-8" />,
+      color: "from-amber-400 to-orange-500",
+      image: "/promo_drag_and_zoom_1766625064100.png"
+    }
+  ];
 
   // Auto-advance slides
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function HeroSlideshow() {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 6000); // 6 seconds per slide
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-slate-900">
@@ -121,15 +122,7 @@ export default function HeroSlideshow() {
                 href="https://apps.apple.com/us/app/quickpeek-image-overlay-tool/id6756771088?mt=12"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  if (typeof window.gtag === 'function') {
-                    window.gtag('event', 'app_store_click', {
-                      event_category: 'engagement',
-                      event_label: 'Hero',
-                      page: 'landing',
-                    });
-                  }
-                }}
+                onClick={() => trackCTAClick('headline_test_v1', variant, 'Hero')}
                 className="bg-white text-slate-900 px-8 py-4 rounded-2xl font-bold hover:scale-105 transition-transform shadow-xl shadow-white/10 flex items-center gap-2"
               >
                 <span>Download for Mac</span>
